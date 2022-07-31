@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Waybane</title>
+</head>
+<body>
+
+<form method="post" action="/login">
+
+    <input type="text" name="username" placeholder="Username">
+
+    <input type="password" name="password" placeholder="Password">
+
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+
+    <button type="submit">Log in</button>
+
+</form>
+
+Don't have an account yet?
+<a href="/registration">Click</a>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Waybane</title>
+</head>
+<body>
+
+<div th:if="${error}" th:text="${error}">Invalid data</div>
+
+<form method="post" action="/registration" th:object="${registrationForm}">
+
+
+    <input type="text" th:field="*{username}" placeholder="Username">
+    <span th:if="${#fields.hasErrors('username')}"
+          th:errors="*{username}"></span><br>
+
+
+    <input type="password" th:field="*{password}" placeholder="Password">
+    <span th:if="${#fields.hasErrors('password')}"
+          th:errors="*{password}"></span><br>
+
+
+    <input type="password" th:field="*{confirm}" placeholder="Confirm">
+    <span th:if="${#fields.hasErrors('confirm')}"
+          th:errors="*{confirm}"></span><br>
+
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+
+    <button type="submit">Registration</button>
+
+</form>
+
+
+<a href="/login">Log in</a>
+
+
+</body>
+</html>

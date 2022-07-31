@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Waybane</title>
+</head>
+<body>
+
+
+<form method="post" action="/main" th:object="${link}">
+
+    <input type="url" th:field="*{url}" placeholder="URL">
+    <span th:if="${#fields.hasErrors('url')}"
+          th:errors="*{url}"></span><br>
+
+    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+
+    <button type="submit">Shorten</button>
+
+</form>
+
+</body>
+</html>
