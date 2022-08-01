@@ -5,6 +5,7 @@ import com.example.waybane.services.LinkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-@Slf4j
 @RequiredArgsConstructor
 public class MainController {
 
@@ -25,21 +25,25 @@ public class MainController {
         return "greeting";
     }
 
-
     @GetMapping("/main")
-    public String mainPage() {
+    public String mainPage(Model model) {
+        model.addAttribute("links", linkService.getLinks());
         return "main";
     }
 
-
     @PostMapping("/main")
-    public String processUrl(@Valid Link link, Errors errors) {
+    public String processUrl(@Valid Link link, Errors errors, Model model) {
 
-        if (errors.hasErrors())
+        if (errors.hasErrors()) {
+            model.addAttribute("links", linkService.getLinks());
             return "main";
+        } else if (linkService.add(link))
+            return "redirect:/main";
 
-        linkService.add(link);
-        return "redirect:/main";
+        model.addAttribute("error", "URL already shortened");
+        model.addAttribute("links", linkService.getLinks());
+
+        return "main";
     }
 
 

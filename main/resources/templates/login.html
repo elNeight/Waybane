@@ -2,24 +2,38 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <th:block th:insert="~{blocks/bootstrap :: meta}"></th:block>
     <title>Waybane</title>
+    <th:block th:insert="~{blocks/bootstrap :: css}"></th:block>
 </head>
 <body>
+<th:block th:insert="~{blocks/bootstrap :: nav}"></th:block>
+<div class="container text-center mt-3">
 
-<form method="post" action="/login">
+    <div th:if="${error}" th:text="${error}">Invalid data</div>
+    <div th:if="${logout}" th:text="${logout}">Invalid data</div>
 
-    <input type="text" name="username" placeholder="Username">
+    <form method="post" action="/login">
 
-    <input type="password" name="password" placeholder="Password">
 
-    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+        <input class="form-control" type="text" name="username" placeholder="Username"><br>
 
-    <button type="submit">Log in</button>
+        <input class="form-control" type="password" name="password" placeholder="Password"><br>
 
-</form>
 
-Don't have an account yet?
-<a href="/registration">Click</a>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
 
+        <button class="btn btn-dark" type="submit">Log in</button>
+
+    </form>
+
+    <div>
+        <h2>Don't have an account yet?</h2>
+    </div>
+    <a href="/registration">Click</a>
+
+
+</div>
+<th:block th:insert="~{blocks/bootstrap :: js}"></th:block>
 </body>
 </html>

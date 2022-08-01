@@ -2,38 +2,48 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <th:block th:insert="~{blocks/bootstrap :: meta}"></th:block>
     <title>Waybane</title>
+    <th:block th:insert="~{blocks/bootstrap :: css}"></th:block>
 </head>
 <body>
+<th:block th:insert="~{blocks/bootstrap :: nav}"></th:block>
+<div class="container text-center mt-3">
 
-<div th:if="${error}" th:text="${error}">Invalid data</div>
+    <div th:if="${error}" th:text="${error}">Invalid data</div>
 
-<form method="post" action="/registration" th:object="${registrationForm}">
-
-
-    <input type="text" th:field="*{username}" placeholder="Username">
-    <span th:if="${#fields.hasErrors('username')}"
-          th:errors="*{username}"></span><br>
+    <form method="post" action="/registration" th:object="${registrationForm}">
 
 
-    <input type="password" th:field="*{password}" placeholder="Password">
-    <span th:if="${#fields.hasErrors('password')}"
-          th:errors="*{password}"></span><br>
+        <input class="form-control" type="text" th:field="*{username}" placeholder="Username">
+        <span th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}"></span><br>
 
 
-    <input type="password" th:field="*{confirm}" placeholder="Confirm">
-    <span th:if="${#fields.hasErrors('confirm')}"
-          th:errors="*{confirm}"></span><br>
-
-    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-
-    <button type="submit">Registration</button>
-
-</form>
+        <input class="form-control" type="password" th:field="*{password}" placeholder="Password">
+        <span th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}"></span><br>
 
 
-<a href="/login">Log in</a>
+        <input class="form-control" type="password" th:field="*{confirm}" placeholder="Confirm">
+        <span th:if="${#fields.hasErrors('confirm')}"
+              th:errors="*{confirm}"></span><br>
+
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+
+        <button class="btn btn-dark" type="submit">Registration</button>
+
+    </form>
 
 
+    <div>
+        <h2>Already have an account?</h2>
+    </div>
+    <a href="/login">Click</a>
+
+
+
+</div>
+<th:block th:insert="~{blocks/bootstrap :: js}"></th:block>
 </body>
 </html>

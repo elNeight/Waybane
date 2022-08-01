@@ -24,6 +24,7 @@ public class RegistrationController {
         return "registration";
     }
 
+
     @PostMapping("/registration")
     public String processRegistration(@Valid RegistrationForm form, Errors errors, Model model) {
 

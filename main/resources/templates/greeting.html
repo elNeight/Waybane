@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+
+    <th:block th:insert="~{blocks/bootstrap :: meta}"></th:block>
     <title>Waybane</title>
+    <th:block th:insert="~{blocks/bootstrap :: css}"></th:block>
+
 </head>
 <body>
+<th:block th:insert="~{blocks/bootstrap :: nav}"></th:block>
+<div class="container text-center mt-3">
 
-<h1>Welcome to Waybane !!!</h1>
+    <h1>Welcome to Waybane !!!</h1>
 
+
+</div>
+<th:block th:insert="~{blocks/bootstrap :: js}"></th:block>
 </body>
 </html>

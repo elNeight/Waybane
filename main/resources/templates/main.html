@@ -2,22 +2,59 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <th:block th:insert="~{blocks/bootstrap :: meta}"></th:block>
     <title>Waybane</title>
+    <th:block th:insert="~{blocks/bootstrap :: css}"></th:block>
 </head>
 <body>
+<th:block th:insert="~{blocks/bootstrap :: nav}"></th:block>
+<div class="container text-center mt-3">
 
 
-<form method="post" action="/main" th:object="${link}">
+    <div th:if="${error}" th:text="${error}">Invalid data</div>
 
-    <input type="url" th:field="*{url}" placeholder="URL">
-    <span th:if="${#fields.hasErrors('url')}"
-          th:errors="*{url}"></span><br>
+    <form method="post" action="/main" th:object="${link}">
 
-    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+        <textarea class="form-control" th:field="*{description}"
+                  placeholder="Description for your link (optional)"
+                  rows="7"></textarea><br>
 
-    <button type="submit">Shorten</button>
+        <input class="form-control" type="url" th:field="*{url}" placeholder="URL">
+        <span th:if="${#fields.hasErrors('url')}"
+              th:errors="*{url}"></span><br>
 
-</form>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
 
+        <button class="btn btn-dark" type="submit">Shorten</button>
+
+    </form>
+
+    <br>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
+        <div th:each="link : ${links}">
+
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="${link.url}" >Card subtitle</h6>
+
+                        <p class="card-text" th:text="${link.description}">Description</p>
+
+                        <a th:href="@{'/sl/' + ${link.token}}" th:text="${'localhost:8080/sl/' + link.token}"
+                           class="card-link" target="_blank">Token</a>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<th:block th:insert="~{blocks/bootstrap :: js}"></th:block>
 </body>
 </html>
