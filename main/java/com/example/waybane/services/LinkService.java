@@ -13,6 +13,4 @@ public interface LinkService {
 
     Optional<Link> findByToken(String token);
 
-    Link update(Link link);
-
 }

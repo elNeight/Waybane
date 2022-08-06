@@ -59,11 +59,4 @@ public class LinkServiceImpl implements LinkService {
         return linkRepository.findByToken(token);
     }
 
-    @Override
-    public Link update(Link link) {
-        linkRepository.save(link);
-        return link;
-    }
-
-
 }

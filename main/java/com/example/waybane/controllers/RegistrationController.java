@@ -30,8 +30,7 @@ public class RegistrationController {
 
         if (errors.hasErrors())
             return "registration";
-
-        if (!form.matchPasswords()) {
+        else if (!form.matchPasswords()) {
             model.addAttribute("error", "Passwords don't match");
             return "registration";
         }

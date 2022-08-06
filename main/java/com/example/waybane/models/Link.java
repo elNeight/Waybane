@@ -5,7 +5,9 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Data
@@ -24,16 +26,15 @@ public class Link {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    private Long transitions;
-    private LocalDateTime creationTime;
+    @OneToMany(mappedBy = "link", cascade = CascadeType.ALL)
+    private List<DayStatistic> dayStatistics;
 
-    public Link() {
-        transitions = 0L;
-    }
+    public void addDayStatistic(DayStatistic dayStatistic) {
+        if (Objects.isNull(dayStatistics))
+            dayStatistics = new ArrayList<>();
 
-    @PrePersist
-    private void prePersist() {
-        creationTime = LocalDateTime.now();
+        dayStatistics.add(dayStatistic);
+        dayStatistic.setLink(this);
     }
 
 }

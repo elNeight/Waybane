@@ -11,8 +11,6 @@ public interface LinkRepository extends JpaRepository<Link, Long> {
 
     Optional<Link> findByToken(String token);
 
-    Optional<Link> findByUrl(String url);
-
     Optional<Link> findByUserAndUrl(User user, String url);
 
     List<Link> findByUser(User user);

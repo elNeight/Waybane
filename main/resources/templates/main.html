@@ -37,6 +37,19 @@
 
             <div class="col">
                 <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{'/links/' + ${link.token}}">Statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Edit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Delete</a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="card-body">
 
                         <h6 class="card-subtitle mb-2 text-muted" th:text="${link.url}" >Card subtitle</h6>
