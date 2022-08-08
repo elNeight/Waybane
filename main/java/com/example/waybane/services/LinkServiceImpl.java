@@ -5,6 +5,8 @@ import com.example.waybane.models.User;
 import com.example.waybane.repositories.LinkRepository;
 import com.example.waybane.services.shortener.Shortener;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -46,12 +48,12 @@ public class LinkServiceImpl implements LinkService {
     }
 
     @Override
-    public List<Link> getLinks() {
+    public Page<Link> getLinks(Pageable pageable) {
         return linkRepository.findByUser(
                 (User) SecurityContextHolder
                         .getContext()
                         .getAuthentication()
-                        .getPrincipal());
+                        .getPrincipal(), pageable);
     }
 
     @Override

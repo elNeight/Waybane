@@ -14,18 +14,19 @@ import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/registration")
 public class RegistrationController {
 
     private final UserService userService;
 
 
-    @GetMapping("/registration")
+    @GetMapping
     public String registration(RegistrationForm form) {
         return "registration";
     }
 
 
-    @PostMapping("/registration")
+    @PostMapping
     public String processRegistration(@Valid RegistrationForm form, Errors errors, Model model) {
 
         if (errors.hasErrors())

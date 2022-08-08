@@ -13,7 +13,6 @@ public interface DayStatisticRepository extends JpaRepository<DayStatistic, Long
 
     Optional<DayStatistic> findByLinkAndDay(Link link, LocalDate day);
 
-    // отработало с подзапросом - вернуть нормальный объект(может вернуть несколько строк(если в два дня одинковое число переходов))
     @Query("select s from DayStatistic s where s.link = ?1 and s.redirections = " +
             "(select max(ss.redirections) from DayStatistic ss where ss.link = ?1)")
     List<DayStatistic> findMostRedirected(Link link);

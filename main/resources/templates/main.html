@@ -52,7 +52,7 @@
                     </div>
                     <div class="card-body">
 
-                        <h6 class="card-subtitle mb-2 text-muted" th:text="${link.url}" >Card subtitle</h6>
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="${link.url}">Card subtitle</h6>
 
                         <p class="card-text" th:text="${link.description}">Description</p>
 
@@ -67,7 +67,18 @@
         </div>
     </div>
 
+    <div th:if="${links.getTotalPages() > 1}" th:insert="~{blocks/bootstrap :: pager(
+    ${links.getNumber()},
+    1,
+    ${links.getNumber() + 1},
+    ${links.getTotalPages()},
+    ${links.getNumber() + 2}
+    )}"></div>
+
+
 </div>
+
+
 <th:block th:insert="~{blocks/bootstrap :: js}"></th:block>
 </body>
 </html>
