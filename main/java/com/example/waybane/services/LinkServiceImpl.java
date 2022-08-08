@@ -61,4 +61,9 @@ public class LinkServiceImpl implements LinkService {
         return linkRepository.findByToken(token);
     }
 
+    @Override
+    public void deleteByToken(String token) {
+        Optional<Link> link = linkRepository.findByToken(token);
+        link.ifPresent(linkRepository::delete);
+    }
 }

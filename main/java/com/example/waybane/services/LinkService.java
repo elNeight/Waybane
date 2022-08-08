@@ -15,4 +15,6 @@ public interface LinkService {
 
     Optional<Link> findByToken(String token);
 
+    void deleteByToken(String token);
+
 }

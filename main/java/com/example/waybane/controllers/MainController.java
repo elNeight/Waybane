@@ -25,6 +25,7 @@ public class MainController {
 
     @GetMapping
     public String mainPage(
+            Link link,
             Model model,
             @RequestParam(required = false, defaultValue = "1") Integer page
     ) {
@@ -53,13 +54,6 @@ public class MainController {
         model.addAttribute("links", linkService.getLinks(pageable));
 
         return "main";
-    }
-
-
-
-    @ModelAttribute
-    public Link link() {
-        return new Link();
     }
 
 }

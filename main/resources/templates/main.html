@@ -46,7 +46,10 @@
                                 <a class="nav-link" href="#">Edit</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Delete</a>
+                                <form method="post" th:action="@{'/links/' + ${link.token}}">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input class="nav-link" type="submit" value="Delete">
+                                </form>
                             </li>
                         </ul>
                     </div>
