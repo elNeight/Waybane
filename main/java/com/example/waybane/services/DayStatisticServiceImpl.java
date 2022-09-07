@@ -1,17 +1,15 @@
 package com.example.waybane.services;
 
 
-import com.example.waybane.models.Link;
 import com.example.waybane.models.DayStatistic;
+import com.example.waybane.models.Link;
 import com.example.waybane.repositories.DayStatisticRepository;
 import com.example.waybane.repositories.LinkRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service

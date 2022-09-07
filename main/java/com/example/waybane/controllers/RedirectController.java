@@ -1,8 +1,8 @@
 package com.example.waybane.controllers;
 
 import com.example.waybane.models.Link;
-import com.example.waybane.services.LinkService;
 import com.example.waybane.services.DayStatisticService;
+import com.example.waybane.services.LinkService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

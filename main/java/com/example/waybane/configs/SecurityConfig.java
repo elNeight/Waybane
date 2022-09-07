@@ -2,7 +2,6 @@ package com.example.waybane.configs;
 
 import com.example.waybane.services.UserService;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,20 +15,20 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-       return http
-               .authorizeRequests()
-               .antMatchers( "/main", "/logout").authenticated()
-               .antMatchers("/*", "/registration").permitAll()
-               .anyRequest().authenticated()
-               .and()
-               .formLogin()
-               .loginPage("/login")
-               .permitAll()
-               .defaultSuccessUrl("/main")
-               .and()
-               .logout()
-               .and()
-               .build();
+        return http
+                .authorizeRequests()
+                .antMatchers("/main", "/logout").authenticated()
+                .antMatchers("/*", "/registration").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .defaultSuccessUrl("/main")
+                .and()
+                .logout()
+                .and()
+                .build();
     }
 
 

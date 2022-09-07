@@ -10,6 +10,7 @@ class FaviconController {
 
     @RequestMapping("/favicon.ico")
     @ResponseBody
-    void favicon() {}
+    void favicon() {
+    }
 
 }

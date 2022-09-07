@@ -1,16 +1,16 @@
 package com.example.waybane.controllers;
 
 import com.example.waybane.models.RegistrationForm;
-import com.example.waybane.models.User;
 import com.example.waybane.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
-import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,8 +34,7 @@ public class RegistrationController {
         else if (!form.matchPasswords()) {
             model.addAttribute("error", "Passwords don't match");
             return "registration";
-        }
-        else if (userService.save(form.toUser()))
+        } else if (userService.save(form.toUser()))
             return "redirect:/login";
 
         model.addAttribute("error", "User already exists");

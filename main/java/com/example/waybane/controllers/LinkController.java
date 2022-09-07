@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,8 +33,7 @@ public class LinkController {
             statisticService.getTotal(value)
                     .ifPresent(s -> model.addAttribute("total", s));
             statisticService.getLastRedirectionDay(value)
-                    .ifPresent(s ->model.addAttribute("lastDay", s));
-
+                    .ifPresent(s -> model.addAttribute("lastDay", s));
 
 
             List<DayStatistic> statistics = statisticService.findMostRedirected(value);
@@ -54,9 +50,6 @@ public class LinkController {
         linkService.deleteByToken(token);
         return "redirect:/main";
     }
-
-
-
 
 
 }

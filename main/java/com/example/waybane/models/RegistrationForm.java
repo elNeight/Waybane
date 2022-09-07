@@ -2,16 +2,14 @@ package com.example.waybane.models;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Data
 public class RegistrationForm {
 
     @Pattern(regexp = "^[a-z0-9_-]{3,16}$",
-    message = "Username must contain digits and characters (3-16 chars)")
+            message = "Username must contain digits and characters (3-16 chars)")
     private String username;
 
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,20}$",
